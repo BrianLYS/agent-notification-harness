@@ -11,7 +11,7 @@ import {
 } from "./agent-notify-queue.mjs"
 
 const scriptRoot = path.resolve(import.meta.dirname, "..")
-const repoRoot = process.env.AGENT_NOTIFY_REPO_ROOT || scriptRoot
+const repoRoot = path.resolve(process.env.AGENT_NOTIFY_REPO_ROOT || process.cwd())
 const notifyScript =
   process.env.CODEX_NOTIFY_TEXT_SCRIPT ||
   path.join(scriptRoot, "scripts", "agent-notify.mjs")
