@@ -1,0 +1,16 @@
+# Changelog
+
+## 0.2.0 - 2026-06-15
+
+- Renamed the package and repository to `agent-notification-harness`.
+- Added `agent-notification-harness-init` for one-command repo adoption.
+- Added default artifact handoff guidance for `.agent-notifications/artifacts/`.
+- Added installed-package regression coverage.
+- Documented Telegram as the only supported provider today.
+- Fixed `codex-stop-notify` to use the consuming repo working directory by default.
+
+## 0.1.0 - 2026-06-15
+
+- Initial public extraction of the Telegram-backed notification harness.
+- Added text, image, media-folder, queue, and optional Codex stop-hook CLIs.
+- Added tests for notification, media dedupe, and queued delivery behavior.

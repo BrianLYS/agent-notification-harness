@@ -1,6 +1,6 @@
 {
   "name": "agent-notification-harness",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tiny notification harness for agent runs, media artifacts, and Codex stop hooks.",
   "license": "MIT",
   "type": "module",
@@ -29,7 +29,11 @@
     "test:media": "node scripts/agent-notify-media.test.mjs",
     "test:codex-stop": "node scripts/codex-stop-notify.test.mjs",
     "test:init": "node scripts/agent-notification-init.test.mjs",
-    "test:installed": "node scripts/installed-package.test.mjs"
+    "test:installed": "node scripts/installed-package.test.mjs",
+    "release:check": "npm test && npm pack --dry-run",
+    "version:patch": "npm version patch --no-git-tag-version",
+    "version:minor": "npm version minor --no-git-tag-version",
+    "version:major": "npm version major --no-git-tag-version"
   },
   "engines": {
     "node": ">=20"

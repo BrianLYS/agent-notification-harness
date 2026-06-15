@@ -201,6 +201,16 @@ A Codex skill can wrap the same convention later, but `AGENTS.md` is the lower-f
 
 The initializer adds this guidance automatically unless `--skip-agents` is passed.
 
+## Versioning
+
+This repo uses SemVer tags. For stable installs from GitHub, pin a tag:
+
+```bash
+npm install --save-dev github:BrianLYS/agent-notification-harness#v0.2.0
+```
+
+Release notes live in [`CHANGELOG.md`](CHANGELOG.md). The release process is documented in [`docs/versioning.md`](docs/versioning.md).
+
 ## Environment
 
 | Variable | Purpose |
