@@ -17,10 +17,14 @@ const localEnv = readLocalEnv(path.join(repoRoot, ".env.local"))
 const telegramBotToken = env("AGENT_NOTIFY_TELEGRAM_BOT_TOKEN")
 const telegramChatId = env("AGENT_NOTIFY_TELEGRAM_CHAT_ID")
 const prefix = env("AGENT_NOTIFY_PREFIX") || "Agent"
+const queueDir = notifyQueueDir(repoRoot, {
+  ...process.env,
+  AGENT_NOTIFY_QUEUE_DIR: env("AGENT_NOTIFY_QUEUE_DIR"),
+})
 const mediaRoot =
   explicitRoot ||
   env("AGENT_NOTIFY_MEDIA_ROOT") ||
-  path.join(repoRoot, "artifacts")
+  path.join(queueDir, "artifacts")
 const mediaDir = explicitDir || env("AGENT_NOTIFY_MEDIA_DIR") || ""
 
 const mediaExtensions = new Set([
@@ -99,7 +103,7 @@ Environment:
   AGENT_NOTIFY_MEDIA_ROOT          Root to search for the newest media directory
 
 Default search root:
-  artifacts
+  .agent-notifications/artifacts
 `)
 }
 
@@ -214,7 +218,7 @@ function mediaEventId(manifestHash) {
 }
 
 function mediaStatePath() {
-  return path.join(notifyQueueDir(repoRoot), "media-sent.json")
+  return path.join(queueDir, "media-sent.json")
 }
 
 function readMediaState() {

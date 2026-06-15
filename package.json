@@ -1,7 +1,7 @@
 {
-  "name": "agent-telegram-harness",
+  "name": "agent-notification-harness",
   "version": "0.1.0",
-  "description": "Tiny Telegram notification harness for agent runs, media artifacts, and Codex stop hooks.",
+  "description": "Tiny notification harness for agent runs, media artifacts, and Codex stop hooks.",
   "license": "MIT",
   "type": "module",
   "bin": {
@@ -15,6 +15,8 @@
   },
   "files": [
     "scripts/*.mjs",
+    "docs/*.md",
+    ".env.example",
     "README.md",
     "LICENSE"
   ],

@@ -30,7 +30,9 @@ function runNotifyMedia(args, options = {}) {
 }
 
 function withTempDir(callback) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "agent-telegram-harness-media-"))
+  const dir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "agent-notification-harness-media-")
+  )
   try {
     return callback(dir)
   } finally {
@@ -45,8 +47,13 @@ function writeMedia(filePath, contents = "media") {
 
 function dryRunUsesNewestMediaFolder() {
   withTempDir((dir) => {
-    const oldDir = path.join(dir, "artifacts", "old")
-    const latestDir = path.join(dir, "artifacts", "latest")
+    const oldDir = path.join(dir, ".agent-notifications", "artifacts", "old")
+    const latestDir = path.join(
+      dir,
+      ".agent-notifications",
+      "artifacts",
+      "latest"
+    )
     writeMedia(path.join(oldDir, "rollout.gif"), "old")
     writeMedia(path.join(latestDir, "preview.png"), "latest")
     const oldTime = new Date("2026-01-01T00:00:00Z")

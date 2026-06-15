@@ -26,7 +26,7 @@ function runNotify(args, options = {}) {
 }
 
 function withTempDir(callback) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "agent-telegram-harness-"))
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "agent-notification-harness-"))
   try {
     return callback(dir)
   } finally {

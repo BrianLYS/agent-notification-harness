@@ -26,7 +26,9 @@ function runNotifyImage(args, options = {}) {
 }
 
 function withTempDir(callback) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "agent-telegram-harness-image-"))
+  const dir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "agent-notification-harness-image-")
+  )
   try {
     return callback(dir)
   } finally {

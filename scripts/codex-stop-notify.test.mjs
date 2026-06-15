@@ -16,7 +16,9 @@ const repoRoot = path.resolve(import.meta.dirname, "..")
 const hookScript = path.join(repoRoot, "scripts", "codex-stop-notify.mjs")
 
 function withTempDir(callback) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "agent-telegram-harness-codex-stop-"))
+  const dir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "agent-notification-harness-codex-stop-")
+  )
   try {
     return callback(dir)
   } finally {
