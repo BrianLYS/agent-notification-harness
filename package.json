@@ -5,6 +5,8 @@
   "license": "MIT",
   "type": "module",
   "bin": {
+    "agent-notification-harness-init": "./scripts/agent-notification-init.mjs",
+    "agent-notify-init": "./scripts/agent-notification-init.mjs",
     "agent-notify": "./scripts/agent-notify.mjs",
     "agent-notify-image": "./scripts/agent-notify-image.mjs",
     "agent-notify-media": "./scripts/agent-notify-media.mjs",
@@ -21,11 +23,13 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "npm run test:notify && npm run test:image && npm run test:media && npm run test:codex-stop",
+    "test": "npm run test:notify && npm run test:image && npm run test:media && npm run test:codex-stop && npm run test:init && npm run test:installed",
     "test:notify": "node scripts/agent-notify.test.mjs",
     "test:image": "node scripts/agent-notify-image.test.mjs",
     "test:media": "node scripts/agent-notify-media.test.mjs",
-    "test:codex-stop": "node scripts/codex-stop-notify.test.mjs"
+    "test:codex-stop": "node scripts/codex-stop-notify.test.mjs",
+    "test:init": "node scripts/agent-notification-init.test.mjs",
+    "test:installed": "node scripts/installed-package.test.mjs"
   },
   "engines": {
     "node": ">=20"

@@ -10,26 +10,17 @@ Use this path for a new repo that does not already have notification conventions
    npm install --save-dev github:BrianLYS/agent-notification-harness
    ```
 
-2. Add package scripts:
-
-   ```json
-   {
-     "scripts": {
-       "agent:notify": "agent-notify",
-       "agent:notify:image": "agent-notify-image",
-       "agent:notify:media": "agent-notify-media",
-       "agent:notify:stop": "codex-stop-notify"
-     }
-   }
-   ```
-
-3. Add ignored local config:
+2. Run the initializer:
 
    ```bash
-   cp node_modules/agent-notification-harness/.env.example .env.local
+   npx agent-notification-harness-init
    ```
 
-4. Ignore local state and secrets:
+   It adds package scripts, creates `.env.local` when absent, updates `.gitignore`, and appends notification guidance to `AGENTS.md`.
+
+3. Fill in `.env.local` with Telegram credentials.
+
+4. Confirm these paths are ignored:
 
    ```gitignore
    .env.local
@@ -46,6 +37,7 @@ Use this path for an existing repo with its own artifact structure.
 
    ```bash
    npm install --save-dev github:BrianLYS/agent-notification-harness
+   npx agent-notification-harness-init
    ```
 
 2. Configure the media root in `.env.local`:

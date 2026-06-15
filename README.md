@@ -2,7 +2,7 @@
 
 Tiny notification harness for agent runs, media artifacts, and Codex stop hooks.
 
-Telegram is the first delivery provider. The repo name stays broader because the useful abstraction is the agent-side handoff: write a message, queue an event, or drop media into a known directory and let a lightweight notifier deliver it.
+Telegram is the only supported delivery provider today. The repo name stays broader because the useful abstraction is the agent-side handoff: write a message, queue an event, or drop media into a known directory and let a lightweight notifier deliver it.
 
 It provides dependency-free Node CLIs for:
 
@@ -18,6 +18,23 @@ It provides dependency-free Node CLIs for:
 - A Telegram chat id for the destination chat
 
 ## Fresh Repo Setup
+
+The intended workflow is simple: tell an agent to integrate this GitHub repo into the target project:
+
+```txt
+Can you integrate https://github.com/BrianLYS/agent-notification-harness into this repo?
+```
+
+The agent should install the package and run the initializer:
+
+```bash
+npm install --save-dev github:BrianLYS/agent-notification-harness
+npx agent-notification-harness-init
+```
+
+That initializer adds package scripts, copies `.env.example` to `.env.local` when absent, updates `.gitignore`, and adds artifact-handoff guidance to `AGENTS.md`.
+
+Manual setup is also small.
 
 Install directly from GitHub:
 
@@ -65,6 +82,7 @@ For a repo that already has its own artifact layout, install the harness and poi
 
 ```bash
 npm install --save-dev github:BrianLYS/agent-notification-harness
+npx agent-notification-harness-init
 AGENT_NOTIFY_MEDIA_ROOT=./artifacts npm run agent:notify:media -- --dry-run
 ```
 
@@ -142,9 +160,11 @@ Override that with:
 AGENT_NOTIFY_MEDIA_ROOT=./artifacts agent-notify-media
 ```
 
-## Codex Stop Hook
+## Optional Codex Stop Hook
 
-The stop hook can either send a generic stop message or deliver a queued pending event.
+`codex-stop-notify` is the optional bridge script for Codex stop-hook style workflows. You can ignore it if you only want explicit text or media notifications.
+
+When used, it can either send a generic stop message or deliver a queued pending event. A queued event means another script wrote `.agent-notifications/pending.json`; the stop hook delivers it once, records it in `.agent-notifications/sent.json`, and keeps it pending if delivery fails.
 
 Generic stop notification:
 
@@ -178,6 +198,8 @@ Queued events are deduped in `.agent-notifications/sent.json`. Failed delivery k
 For durable behavior, add a short note to the target repo’s `AGENTS.md`. A copy-paste snippet lives in [`docs/AGENTS-snippet.md`](docs/AGENTS-snippet.md).
 
 A Codex skill can wrap the same convention later, but `AGENTS.md` is the lower-friction default because it travels with each repo and can describe repo-specific artifact expectations.
+
+The initializer adds this guidance automatically unless `--skip-agents` is passed.
 
 ## Environment
 
