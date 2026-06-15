@@ -28,18 +28,25 @@ Can you integrate https://github.com/BrianLYS/agent-notification-harness into th
 The agent should install the package and run the initializer:
 
 ```bash
-npm install --save-dev github:BrianLYS/agent-notification-harness
-npx agent-notification-harness-init
+npm install -D BrianLYS/agent-notification-harness#v0.2.1
+npx agent-notification-harness
 ```
 
 That initializer adds package scripts, copies `.env.example` to `.env.local` when absent, updates `.gitignore`, and adds artifact-handoff guidance to `AGENTS.md`.
+
+Equivalent initializer names also work:
+
+```bash
+npx agent-notification-harness-init
+npx agent-notify-init
+```
 
 Manual setup is also small.
 
 Install directly from GitHub:
 
 ```bash
-npm install --save-dev github:BrianLYS/agent-notification-harness
+npm install -D BrianLYS/agent-notification-harness#v0.2.1
 ```
 
 Add scripts to your `package.json`:
@@ -81,8 +88,8 @@ Make sure these paths are ignored:
 For a repo that already has its own artifact layout, install the harness and point it at your current media root:
 
 ```bash
-npm install --save-dev github:BrianLYS/agent-notification-harness
-npx agent-notification-harness-init
+npm install -D BrianLYS/agent-notification-harness#v0.2.1
+npx agent-notification-harness
 AGENT_NOTIFY_MEDIA_ROOT=./artifacts npm run agent:notify:media -- --dry-run
 ```
 
@@ -206,7 +213,7 @@ The initializer adds this guidance automatically unless `--skip-agents` is passe
 This repo uses SemVer tags. For stable installs from GitHub, pin a tag:
 
 ```bash
-npm install --save-dev github:BrianLYS/agent-notification-harness#v0.2.0
+npm install --save-dev github:BrianLYS/agent-notification-harness#v0.2.1
 ```
 
 Release notes live in [`CHANGELOG.md`](CHANGELOG.md). The release process is documented in [`docs/versioning.md`](docs/versioning.md).

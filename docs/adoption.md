@@ -7,13 +7,13 @@ Use this path for a new repo that does not already have notification conventions
 1. Install the harness:
 
    ```bash
-   npm install --save-dev github:BrianLYS/agent-notification-harness
+   npm install -D BrianLYS/agent-notification-harness#v0.2.1
    ```
 
 2. Run the initializer:
 
    ```bash
-   npx agent-notification-harness-init
+   npx agent-notification-harness
    ```
 
    It adds package scripts, creates `.env.local` when absent, updates `.gitignore`, and appends notification guidance to `AGENTS.md`.
@@ -36,8 +36,8 @@ Use this path for an existing repo with its own artifact structure.
 1. Install the harness without changing existing output paths:
 
    ```bash
-   npm install --save-dev github:BrianLYS/agent-notification-harness
-   npx agent-notification-harness-init
+   npm install -D BrianLYS/agent-notification-harness#v0.2.1
+   npx agent-notification-harness
    ```
 
 2. Configure the media root in `.env.local`:

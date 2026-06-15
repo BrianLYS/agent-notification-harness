@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 - 2026-06-15
+
+- Added `agent-notification-harness` as a package-name initializer bin.
+- Documented the shorter GitHub install command.
+- Updated installed-package coverage to verify the shorter initializer entrypoint.
+
 ## 0.2.0 - 2026-06-15
 
 - Renamed the package and repository to `agent-notification-harness`.

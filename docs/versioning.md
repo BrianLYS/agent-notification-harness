@@ -17,7 +17,13 @@ After `1.0.0`:
 Pin a GitHub tag for repeatable installs:
 
 ```bash
-npm install --save-dev github:BrianLYS/agent-notification-harness#v0.2.0
+npm install --save-dev github:BrianLYS/agent-notification-harness#v0.2.1
+```
+
+The shorter npm GitHub shorthand is equivalent:
+
+```bash
+npm install -D BrianLYS/agent-notification-harness#v0.2.1
 ```
 
 Use the default branch only when you want the latest development state:

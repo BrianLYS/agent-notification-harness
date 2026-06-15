@@ -34,7 +34,7 @@ function installedPackageBinsWork() {
     assert.equal(install.status, 0, install.stderr)
 
     const binDir = path.join(dir, "node_modules", ".bin")
-    const init = run(path.join(binDir, "agent-notification-harness-init"), [], {
+    const init = run(path.join(binDir, "agent-notification-harness"), [], {
       cwd: dir,
     })
     assert.equal(init.status, 0, init.stderr)
