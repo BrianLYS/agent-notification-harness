@@ -1,0 +1,31 @@
+{
+  "name": "agent-telegram-harness",
+  "version": "0.1.0",
+  "description": "Tiny Telegram notification harness for agent runs, media artifacts, and Codex stop hooks.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "agent-notify": "./scripts/agent-notify.mjs",
+    "agent-notify-image": "./scripts/agent-notify-image.mjs",
+    "agent-notify-media": "./scripts/agent-notify-media.mjs",
+    "codex-stop-notify": "./scripts/codex-stop-notify.mjs"
+  },
+  "exports": {
+    "./queue": "./scripts/agent-notify-queue.mjs"
+  },
+  "files": [
+    "scripts/*.mjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "npm run test:notify && npm run test:image && npm run test:media && npm run test:codex-stop",
+    "test:notify": "node scripts/agent-notify.test.mjs",
+    "test:image": "node scripts/agent-notify-image.test.mjs",
+    "test:media": "node scripts/agent-notify-media.test.mjs",
+    "test:codex-stop": "node scripts/codex-stop-notify.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
